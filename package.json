@@ -1,6 +1,6 @@
 {
   "name": "web-server-database",
-  "version": "0.0.0",
+  "version": "1.0.2",
   "description": "nav components",
   "main": "module.js",
   "scripts": {
