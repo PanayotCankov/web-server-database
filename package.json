@@ -1,0 +1,38 @@
+{
+  "name": "web-server-database",
+  "version": "0.0.0",
+  "description": "nav components",
+  "main": "module.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TrevorVonSeggern/web-server-database.git"
+  },
+  "keywords": [
+    "component",
+    "server-database",
+    "express"
+  ],
+  "author": "Trevor Von Seggern",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TrevorVonSeggern/web-server-database/issues"
+  },
+  "homepage": "https://github.com/TrevorVonSeggern/web-server-database#readme",
+  "devDependencies": {
+    "@types/es6-shim": "^0.31.32",
+    "gulp": "^3.9.1",
+    "typings": "^2.1.0"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.16.0",
+    "ejs": "^2.5.5",
+    "express": "^4.14.1",
+    "helmet": "^3.4.0",
+    "moment": "^2.17.1",
+    "mysql": "^2.13.0"
+  }
+}
