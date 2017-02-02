@@ -1,5 +1,5 @@
 "use strict";
-var bcrypt = require('bcrypt-nodejs');
+var bcrypt = require("bcrypt-nodejs");
 var Connection_1 = require("../sql/Connection");
 function hashString(input, _salt) {
     return new Promise(function (resolve, reject) {

@@ -1,6 +1,6 @@
 "use strict";
 var databaseConfig_1 = require("../../databaseConfig");
-var mysql = require('mysql');
+var mysql = require("mysql");
 var settings = databaseConfig_1.GetDatabaseConfig();
 settings.multipleStatements = true;
 var Connection = (function () {
@@ -73,9 +73,9 @@ var Connection = (function () {
             });
         }
     };
-    Connection.pool = undefined;
-    Connection.poolActiveConnections = 0;
     return Connection;
 }());
+Connection.pool = undefined;
+Connection.poolActiveConnections = 0;
 exports.Connection = Connection;
 //# sourceMappingURL=Connection.js.map
