@@ -1,10 +1,9 @@
 import {Express} from "express";
 import {privateLogs} from "./logs";
-import {Router} from "express";
-let express = require('express');
+import express = require('express');
 
-export interface APIModule {
-	router: Router;
+export class APIModule {
+	router: any;
 	name: string;
 }
 

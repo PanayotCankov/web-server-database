@@ -1,6 +1,12 @@
 "use strict";
 var logs_1 = require("./logs");
-var express = require('express');
+var express = require("express");
+var APIModule = (function () {
+    function APIModule() {
+    }
+    return APIModule;
+}());
+exports.APIModule = APIModule;
 exports.APIModules = [];
 function UseApi(app) {
     var router = express.Router();
