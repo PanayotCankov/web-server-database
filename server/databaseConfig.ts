@@ -1,10 +1,11 @@
-// Created by trevor on 2/2/17.
+let process = require('process');
+
 export let defaultConfig = {
-	database: 'Quicksilver',
-	host: 'localhost',
-	port: 3306,
-	user: 'username',
-	password: 'password',
+	database: process.env.DB_DATABASE || 'Quicksilver',
+	host: process.env.DB_HOST || 'localhost',
+	port: process.env.DB_PORT || 3306,
+	user: process.env.DB_USERNAME || 'username',
+	password: process.env.PASSWORD || 'password',
 	waitForConnections: true,
 	connectionLimit: 50,
 };
@@ -12,3 +13,5 @@ export let defaultConfig = {
 export function GetDatabaseConfig() {
 	return defaultConfig;
 }
+
+

@@ -75,20 +75,20 @@ declare module 'web-server-database/server/database/QueryRequest' {
 }
 declare module 'web-server-database/server/databaseConfig' {
 	export let defaultConfig: {
-	    database: string;
-	    host: string;
-	    port: number;
-	    user: string;
-	    password: string;
+	    database: any;
+	    host: any;
+	    port: any;
+	    user: any;
+	    password: any;
 	    waitForConnections: boolean;
 	    connectionLimit: number;
 	};
 	export function GetDatabaseConfig(): {
-	    database: string;
-	    host: string;
-	    port: number;
-	    user: string;
-	    password: string;
+	    database: any;
+	    host: any;
+	    port: any;
+	    user: any;
+	    password: any;
 	    waitForConnections: boolean;
 	    connectionLimit: number;
 	};
