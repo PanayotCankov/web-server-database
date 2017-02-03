@@ -1,5 +1,5 @@
 import * as bcrypt from 'bcrypt-nodejs'
-import {Connection} from "../sql/Connection";
+import {Connection} from "./Connection";
 
 export function hashString(input, _salt): Promise<string> {
 	return new Promise<string>((resolve, reject) => {

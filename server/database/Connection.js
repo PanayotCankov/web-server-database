@@ -1,5 +1,5 @@
 "use strict";
-var databaseConfig_1 = require("../../databaseConfig");
+var databaseConfig_1 = require("../databaseConfig");
 var mysql = require("mysql");
 var settings = databaseConfig_1.GetDatabaseConfig();
 settings.multipleStatements = true;

@@ -1,5 +1,5 @@
 import {QueryRequest} from "./QueryRequest";
-import {GetDatabaseConfig} from "../../databaseConfig";
+import {GetDatabaseConfig} from "../databaseConfig";
 import mysql = require('mysql');
 
 let settings: any = GetDatabaseConfig();

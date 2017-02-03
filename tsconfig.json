@@ -7,9 +7,10 @@
 	"removeComments": true,
 	"preserveConstEnums": true,
 	"sourceMap": true,
-	"declaration": true
+	"declaration": false
   },
   "exclude": [
+	"lib",
 	"node_modules",
 	"bower_components"
   ]
