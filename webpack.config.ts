@@ -1,15 +1,16 @@
 let webpack = require('webpack');
 let path = require('path');
+let process = require('process');
 
 export default {
 	devtool: '#eval-source-map',
 	entry: [
 		'webpack-hot-middleware/client',
-		path.resolve(__dirname, './module.js')
+		path.resolve(process.cwd(), './module.js')
 	],
 	output: {
 		publicPath: '/',
-		path: __dirname,
+		path: process.cwd(),
 		filename: 'bundle.js'
 	},
 	externals: {
