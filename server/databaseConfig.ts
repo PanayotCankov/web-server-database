@@ -5,7 +5,7 @@ export let defaultConfig = {
 	host: process.env.DB_HOST || 'localhost',
 	port: process.env.DB_PORT || 3306,
 	user: process.env.DB_USERNAME || 'username',
-	password: process.env.PASSWORD || 'password',
+	password: process.env.DB_PASSWORD || 'password',
 	waitForConnections: true,
 	connectionLimit: 50,
 };
