@@ -9,7 +9,7 @@ declare module 'web-server-database/webpack.config' {
 	    entry: any[];
 	    output: {
 	        publicPath: string;
-	        path: string;
+	        path: any;
 	        filename: string;
 	    };
 	    externals: {
@@ -42,7 +42,7 @@ declare module 'web-server-database/App' {
 	        entry: any[];
 	        output: {
 	            publicPath: string;
-	            path: string;
+	            path: any;
 	            filename: string;
 	        };
 	        externals: {

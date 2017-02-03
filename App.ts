@@ -74,6 +74,11 @@ export class App {
 			this.express.set('view engine', 'html');
 			this.express.get('/', (req, res, next) => res.render('index'));
 		}
+		else {
+			console.log('Production env. Make sure that bundle.js script exists!');
+		}
+
+		this.express.use('/', express.static(process.cwd()));
 
 		this.express.listen(port, () => logs('listening on port: ' + port + ' - ' + env));
 	}

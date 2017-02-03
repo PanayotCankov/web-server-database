@@ -62,6 +62,10 @@ var App = (function () {
             this.express.set('view engine', 'html');
             this.express.get('/', function (req, res, next) { return res.render('index'); });
         }
+        else {
+            console.log('Production env. Make sure that bundle.js script exists!');
+        }
+        this.express.use('/', express.static(process.cwd()));
         this.express.listen(port, function () { return logs_1.default('listening on port: ' + port + ' - ' + env); });
     };
     return App;
