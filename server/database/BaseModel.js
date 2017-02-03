@@ -29,7 +29,7 @@ exports.NewUID = NewUID;
 var mapIgnoredItems = ['modelType', 'existingModel'];
 function mapObjectToObject(from, to, schema) {
     var keys = schema;
-    if (!schema && this.schema && this.schema.attributes)
+    if (schema && this.schema && this.schema.attributes)
         keys = Object.keys(this.schema.attributes);
     if (from === undefined || to === undefined)
         return;

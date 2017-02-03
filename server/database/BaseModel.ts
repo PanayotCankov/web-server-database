@@ -31,7 +31,7 @@ let mapIgnoredItems = ['modelType', 'existingModel'];
 
 export function mapObjectToObject(from: any, to: any, schema?: any) {
 	let keys = schema;
-	if (!schema && this.schema && this.schema.attributes)
+	if (schema && this.schema && this.schema.attributes)
 		keys = Object.keys(this.schema.attributes);
 	if (from === undefined || to === undefined)
 		return;
