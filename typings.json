@@ -7,7 +7,11 @@
     "helmet": "registry:dt/helmet#0.0.0+20161005184000",
     "mime": "registry:dt/mime#0.0.0+20160428043022",
     "mysql": "registry:dt/mysql#0.0.0+20170113202751",
-    "serve-static": "registry:dt/serve-static#1.7.1+20161128184045"
+    "serve-static": "registry:dt/serve-static#1.7.1+20161128184045",
+    "source-map": "registry:dt/source-map#0.5.6+20161128184045",
+    "tapable": "registry:dt/tapable#0.2.5+20161220195540",
+    "uglify-js": "registry:dt/uglify-js#2.6.1+20160510010627",
+    "webpack": "registry:dt/webpack#2.2.0+20170124214322"
   },
   "globalDependencies": {
     "node": "registry:dt/node#7.0.0+20170124134802"

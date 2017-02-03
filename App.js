@@ -2,6 +2,7 @@
 var express = require("express");
 var helmet = require("helmet");
 var logs_1 = require("./server/logs");
+var webpack_config_1 = require("./webpack.config");
 var bodyParser = require("body-parser");
 var APIModule = (function () {
     function APIModule() {
@@ -12,6 +13,7 @@ exports.APIModule = APIModule;
 var App = (function () {
     function App() {
         this.APIModules = [];
+        this.webpackConfig = webpack_config_1.default;
         this.express = express();
         this.middleware();
     }
@@ -42,6 +44,19 @@ var App = (function () {
             port = process.env.PORT || 3000;
         var env = process.env.NODE_ENV || 'dev';
         if (env === 'dev') {
+            var webpack = require('webpack');
+            var webpackDevMiddleware = require('webpack-dev-middleware');
+            var webpackHotMiddleware = require('webpack-hot-middleware');
+            var compiler = webpack(this.webpackConfig);
+            this.express.use(webpackDevMiddleware(compiler, {
+                publicPath: this.webpackConfig.output.publicPath,
+                stats: { colors: true }
+            }));
+            this.express.use(webpackHotMiddleware(compiler, {
+                log: console.log,
+                noInfo: true,
+                reload: true,
+            }));
             this.express.set('views', process.cwd());
             this.express.engine('html', require('ejs').renderFile);
             this.express.set('view engine', 'html');

@@ -2,6 +2,7 @@
 import * as express from 'express';
 import helmet = require("helmet");
 import {privateLogs, default as logs} from "./server/logs";
+import defaultWebpackConfig from './webpack.config';
 let bodyParser = require("body-parser");
 
 export class APIModule {
@@ -12,6 +13,7 @@ export class APIModule {
 export class App {
 	public express: express.Application;
 	public APIModules: APIModule[] = [];
+	public webpackConfig = defaultWebpackConfig;
 
 	constructor() {
 		this.express = express();
@@ -51,6 +53,22 @@ export class App {
 
 		let env = process.env.NODE_ENV || 'dev';
 		if (env === 'dev') {
+			let webpack = require('webpack');
+			let webpackDevMiddleware = require('webpack-dev-middleware');
+			let webpackHotMiddleware = require('webpack-hot-middleware');
+
+			let compiler = webpack(this.webpackConfig);
+
+			this.express.use(webpackDevMiddleware(compiler, {
+				publicPath: this.webpackConfig.output.publicPath,
+				stats: {colors: true}
+			}));
+			this.express.use(webpackHotMiddleware(compiler, {
+				log: console.log,
+				noInfo: true,
+				reload: true,
+			}));
+
 			this.express.set('views', process.cwd());
 			this.express.engine('html', require('ejs').renderFile);
 			this.express.set('view engine', 'html');
