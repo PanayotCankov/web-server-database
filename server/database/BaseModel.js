@@ -1,9 +1,9 @@
 "use strict";
-var bcrypt = require("bcrypt-nodejs");
+var bcrypt = require("bcryptjs");
 var Connection_1 = require("./Connection");
 function hashString(input, _salt) {
     return new Promise(function (resolve, reject) {
-        bcrypt.hash(input, _salt, null, function (err, hash) {
+        bcrypt.hash(input, _salt, function (err, hash) {
             if (err)
                 reject(err);
             else

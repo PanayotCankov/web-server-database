@@ -1,4 +1,5 @@
 /// <reference path="modules/bcrypt-nodejs/index.d.ts" />
+/// <reference path="modules/bcryptjs/index.d.ts" />
 /// <reference path="modules/helmet/index.d.ts" />
 /// <reference path="modules/mysql/index.d.ts" />
 /// <reference path="modules/source-map/index.d.ts" />

@@ -15,6 +15,7 @@ export default {
 	},
 	externals: {
 		'angular': 'angular',
+		'crypto': 'crypto',
 		'$': "$",
 	},
 	resolve: {
