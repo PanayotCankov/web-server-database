@@ -6,12 +6,22 @@ let settings: any = GetDatabaseConfig();
 settings.multipleStatements = true;
 
 export class Connection {
-	static pool: any = undefined;
+	static pool: any = mysql.createPool(settings);
 	static poolActiveConnections: number = 0;
 	requestPool: QueryRequest[] = [];
 
 	static format(query: string, inserts: string[]): string {
 		return mysql.format(query, inserts)
+	}
+
+	static formatObject(query: string, values: any): string {
+		if (!values) return query;
+		return query.replace(/\:(\w+)/g, function (txt, key) {
+			if (values.hasOwnProperty(key)) {
+				return mysql.escape(values[key]);
+			}
+			return txt;
+		}.bind(this));
 	}
 
 	static createPoolConnection() {
@@ -23,21 +33,12 @@ export class Connection {
 	static query(query: string): Promise<any> {
 		return new Promise<any>((resolve, reject) => {
 			Connection.createPoolConnection();
-			Connection.pool.getConnection(function (error: any, mysqlCon: any) {
-				if (error) {
-					mysqlCon && mysqlCon.release();
-					console.log(error);
-					reject(error);
-					return;
-				}
 
-				mysqlCon.query(query, (error, data) => {
-					if (error)
-						reject(error);
-					else
-						resolve(data);
-				});
-				mysqlCon.release();
+			Connection.pool.query(query, (error, data) => {
+				if (error)
+					reject(error);
+				else
+					resolve(data);
 			});
 		});
 	}

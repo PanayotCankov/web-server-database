@@ -10,6 +10,16 @@ var Connection = (function () {
     Connection.format = function (query, inserts) {
         return mysql.format(query, inserts);
     };
+    Connection.formatObject = function (query, values) {
+        if (!values)
+            return query;
+        return query.replace(/\:(\w+)/g, function (txt, key) {
+            if (values.hasOwnProperty(key)) {
+                return mysql.escape(values[key]);
+            }
+            return txt;
+        }.bind(this));
+    };
     Connection.createPoolConnection = function () {
         if (Connection.pool == undefined) {
             Connection.pool = mysql.createPool(settings);
@@ -18,20 +28,11 @@ var Connection = (function () {
     Connection.query = function (query) {
         return new Promise(function (resolve, reject) {
             Connection.createPoolConnection();
-            Connection.pool.getConnection(function (error, mysqlCon) {
-                if (error) {
-                    mysqlCon && mysqlCon.release();
-                    console.log(error);
+            Connection.pool.query(query, function (error, data) {
+                if (error)
                     reject(error);
-                    return;
-                }
-                mysqlCon.query(query, function (error, data) {
-                    if (error)
-                        reject(error);
-                    else
-                        resolve(data);
-                });
-                mysqlCon.release();
+                else
+                    resolve(data);
             });
         });
     };
@@ -75,7 +76,7 @@ var Connection = (function () {
     };
     return Connection;
 }());
-Connection.pool = undefined;
+Connection.pool = mysql.createPool(settings);
 Connection.poolActiveConnections = 0;
 exports.Connection = Connection;
 //# sourceMappingURL=Connection.js.map
