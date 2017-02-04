@@ -9,6 +9,9 @@
 	"sourceMap": true,
 	"declaration": false
   },
+  "types": [
+	"jasmine"
+  ],
   "exclude": [
 	"lib",
 	"node_modules",

@@ -1,5 +1,3 @@
-import {} from 'jasmine';
-
 class MockHelloService {
 
 	public sayHello(): string {

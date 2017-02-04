@@ -1,4 +1,3 @@
-"use strict";
 var MockHelloService = (function () {
     function MockHelloService() {
     }
