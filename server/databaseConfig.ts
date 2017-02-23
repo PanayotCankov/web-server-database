@@ -1,17 +1,18 @@
-let process = require('process');
+import {Connection} from './database/Connection';
+import {mapObjectToObject, hashString, NewUID, ServerModel} from './database/BaseModel';
+import {QueryRequest} from './database/QueryRequest';
+import {GetDatabaseConfig} from "./database/config";
+import {sqlize} from "./database/sqlize";
+import {Sequelize} from "sequelize";
 
-export let defaultConfig = {
-	database: process.env.DB_DATABASE || 'Quicksilver',
-	host: process.env.DB_HOST || 'localhost',
-	port: process.env.DB_PORT || 3306,
-	user: process.env.DB_USERNAME || 'username',
-	password: process.env.DB_PASSWORD || 'password',
-	waitForConnections: true,
-	connectionLimit: 50,
-};
-
-export function GetDatabaseConfig() {
-	return defaultConfig;
+export class Database {
+	DatabaseConfig = GetDatabaseConfig();
+	Connection = Connection;
+	QueryRequest = QueryRequest;
+	mapObjectToObject = mapObjectToObject;
+	hashString = hashString;
+	NewUID = NewUID;
+	ServerModel = ServerModel;
+	sqlize: Sequelize = sqlize;
 }
-
 

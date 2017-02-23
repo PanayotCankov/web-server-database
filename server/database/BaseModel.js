@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var bcrypt = require("bcryptjs");
 var Connection_1 = require("./Connection");
 function hashString(input, _salt) {
@@ -58,6 +59,10 @@ var ServerModel = (function () {
             resolve();
         });
     };
+    ServerModel.prototype.saveScript = function (modelInstance) {
+        return new Promise(function (resolve) { return resolve(""); });
+    };
+    ;
     ServerModel.prototype.save = function () {
         var _this = this;
         if (!this.existingModel)
@@ -86,6 +91,10 @@ var ServerModel = (function () {
             });
         });
     };
+    ServerModel.prototype.createScript = function (modelInstance) {
+        return new Promise(function (resolve) { return resolve(""); });
+    };
+    ;
     ServerModel.prototype.create = function () {
         var _this = this;
         this._id = NewUID();
@@ -113,6 +122,10 @@ var ServerModel = (function () {
             });
         });
     };
+    ServerModel.prototype.removeByIdScript = function (id) {
+        return new Promise(function (resolve) { return resolve(""); });
+    };
+    ;
     ServerModel.prototype.removeById = function (id) {
         var _this = this;
         return new Promise(function (resolve, reject) {
@@ -133,6 +146,10 @@ var ServerModel = (function () {
     ServerModel.prototype.remove = function () {
         return this.removeById(this._id);
     };
+    ServerModel.prototype.getOneByIdScript = function (id) {
+        return new Promise(function (resolve) { return resolve(""); });
+    };
+    ;
     ServerModel.prototype.getOneById = function (id) {
         var _this = this;
         return new Promise(function (resolve, reject) {
@@ -151,6 +168,10 @@ var ServerModel = (function () {
             });
         });
     };
+    ServerModel.prototype.getAllScript = function (limit, skip) {
+        return new Promise(function (resolve) { return resolve(""); });
+    };
+    ;
     ServerModel.prototype.all = function (limit, skip) {
         var _this = this;
         if (!skip || skip < 0)
@@ -168,6 +189,10 @@ var ServerModel = (function () {
             });
         });
     };
+    ServerModel.prototype.getCountScript = function () {
+        return new Promise(function (resolve) { return resolve(""); });
+    };
+    ;
     ServerModel.prototype.getCount = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {

@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function CheckNumberParameter(input) {
     var result = 0;
     if (input) {

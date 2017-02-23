@@ -1,0 +1,10 @@
+node_modules/
+coverage/
+
+# Don't publish ts files.
+**/*.ts
+!**/*.d.ts
+
+#don't care about typings or tests. Typins should be in the node_modules folder.
+typings/
+tests/

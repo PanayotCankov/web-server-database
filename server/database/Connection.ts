@@ -1,12 +1,13 @@
 import {QueryRequest} from "./QueryRequest";
-import {GetDatabaseConfig} from "../databaseConfig";
 import mysql = require('mysql');
+import {GetDatabaseConfig} from "./config";
 
 let settings: any = GetDatabaseConfig();
 settings.multipleStatements = true;
 
 export class Connection {
-	static pool: any = mysql.createPool(settings);
+	// don't create the pool on startup.
+	static pool: any; // = mysql.createPool(settings);
 	static poolActiveConnections: number = 0;
 	requestPool: QueryRequest[] = [];
 

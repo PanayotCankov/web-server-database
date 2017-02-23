@@ -11,6 +11,7 @@ export function hashString(input, _salt): Promise<string> {
 		});
 	});
 }
+
 function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -38,6 +39,7 @@ export function mapObjectToObject(from: any, to: any, schema?: any) {
 	if (!keys)
 		keys = Object.keys(from);
 	for (let key in keys) {
+		//noinspection JSUnfilteredForInLoop
 		let index = keys[key];
 		if (mapIgnoredItems.indexOf(index) > -1) // ignore form the list.
 			continue;
@@ -48,7 +50,7 @@ export function mapObjectToObject(from: any, to: any, schema?: any) {
 	}
 }
 
-export abstract class ServerModel {
+export class ServerModel {
 	_id: string;
 	existingModel: boolean;
 
@@ -66,7 +68,9 @@ export abstract class ServerModel {
 		});
 	}
 
-	protected abstract saveScript(modelInstance: any): Promise<string>;
+	protected saveScript(modelInstance: any): Promise<string>{
+		return new Promise<string>((resolve) => resolve(""));
+	};
 
 	save(): Promise<ServerModel> {
 		if (!this.existingModel)
@@ -99,7 +103,9 @@ export abstract class ServerModel {
 		});
 	}
 
-	protected abstract createScript(modelInstance: any): Promise<string>;
+	protected createScript(modelInstance: any): Promise<string> {
+		return new Promise<string>((resolve) => resolve(""));
+	};
 
 	create(): Promise<ServerModel> {
 		this._id = NewUID();
@@ -129,7 +135,9 @@ export abstract class ServerModel {
 		});
 	}
 
-	protected abstract removeByIdScript(id: string): Promise<string>;
+	protected removeByIdScript(id: string): Promise<string> {
+		return new Promise<string>((resolve) => resolve(""));
+	};
 
 	removeById(id: string): Promise<void> {
 		return new Promise<void>((resolve, reject) => {
@@ -153,7 +161,9 @@ export abstract class ServerModel {
 		return this.removeById(this._id);
 	}
 
-	protected abstract getOneByIdScript(id: string): Promise<string>;
+	protected getOneByIdScript(id: string): Promise<string> {
+		return new Promise<string>((resolve) => resolve(""));
+	};
 
 	getOneById(id: string): Promise<ServerModel> {
 		return new Promise<ServerModel>((resolve, reject) => {
@@ -173,7 +183,9 @@ export abstract class ServerModel {
 		});
 	}
 
-	protected abstract getAllScript(limit: number, skip: number): Promise<string>;
+	protected getAllScript(limit: number, skip: number): Promise<string> {
+		return new Promise<string>((resolve) => resolve(""));
+	};
 
 	all(limit?: number, skip?: number): Promise<any[]> {
 		if (!skip || skip < 0)
@@ -192,7 +204,9 @@ export abstract class ServerModel {
 		});
 	}
 
-	protected abstract getCountScript(): Promise<string>;
+	protected getCountScript(): Promise<string> {
+		return new Promise<string>((resolve) => resolve(""));
+	};
 
 	getCount(): Promise<number> {
 		return new Promise<number>((resolve, reject) => {

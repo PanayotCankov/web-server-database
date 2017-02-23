@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var Connection_1 = require("../../../server/database/Connection");
 describe("SQL Format Object", function () {
     it("Outputs string null object", function () {

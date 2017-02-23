@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var QueryRequest = (function () {
     function QueryRequest(query_value, callback_value) {
         this.callback = callback_value;

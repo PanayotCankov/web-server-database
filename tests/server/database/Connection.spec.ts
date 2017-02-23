@@ -7,7 +7,7 @@ describe("SQL Format Object", () => {
 		let output = Connection.formatObject(input, null);
 		expect(input).toEqual(output);
 	});
-	
+
 	it("Outputs string undefined object", () => {
 		let input = 'hello world';
 		let output = Connection.formatObject(input, null);
