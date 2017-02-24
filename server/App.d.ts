@@ -1,3 +1,4 @@
+/// <reference types="express" />
 import * as express from 'express';
 import { APIModule } from "./module";
 export declare class Application {

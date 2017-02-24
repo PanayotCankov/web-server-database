@@ -1,3 +1,4 @@
+/// <reference types="sequelize" />
 import { Connection } from './database/Connection';
 import { mapObjectToObject, hashString, NewUID, ServerModel } from './database/BaseModel';
 import { QueryRequest } from './database/QueryRequest';

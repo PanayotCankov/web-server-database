@@ -1,3 +1,4 @@
+/// <reference types="express" />
 import { Application } from "./App";
 import { Database } from "./databaseConfig";
 import * as e from "express";
