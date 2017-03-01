@@ -1,16 +1,4 @@
-import * as bcrypt from 'bcryptjs'
 import {Connection} from "./Connection";
-
-export function hashString(input, _salt): Promise<string> {
-	return new Promise<string>((resolve, reject) => {
-		bcrypt.hash(input, _salt, function (err, hash) {
-			if (err)
-				reject(err);
-			else
-				resolve(hash);
-		});
-	});
-}
 
 function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;

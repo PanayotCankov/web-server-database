@@ -1,18 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var bcrypt = require("bcryptjs");
 var Connection_1 = require("./Connection");
-function hashString(input, _salt) {
-    return new Promise(function (resolve, reject) {
-        bcrypt.hash(input, _salt, function (err, hash) {
-            if (err)
-                reject(err);
-            else
-                resolve(hash);
-        });
-    });
-}
-exports.hashString = hashString;
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }

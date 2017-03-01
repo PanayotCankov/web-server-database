@@ -1,4 +1,3 @@
-export declare function hashString(input: any, _salt: any): Promise<string>;
 export declare function NewUID(): string;
 export declare function mapObjectToObject(from: any, to: any, schema?: any): void;
 export declare class ServerModel {

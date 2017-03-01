@@ -11,7 +11,6 @@ var Database = (function () {
         this.Connection = Connection_1.Connection;
         this.QueryRequest = QueryRequest_1.QueryRequest;
         this.mapObjectToObject = BaseModel_1.mapObjectToObject;
-        this.hashString = BaseModel_1.hashString;
         this.NewUID = BaseModel_1.NewUID;
         this.ServerModel = BaseModel_1.ServerModel;
         this.sqlize = sqlize_1.sqlize;

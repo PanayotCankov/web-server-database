@@ -4,6 +4,7 @@ export declare let defaultConfig: {
     port: any;
     user: any;
     password: any;
+    force: any;
     waitForConnections: boolean;
     connectionLimit: number;
 };
@@ -13,6 +14,7 @@ export declare function GetDatabaseConfig(): {
     port: any;
     user: any;
     password: any;
+    force: any;
     waitForConnections: boolean;
     connectionLimit: number;
 };

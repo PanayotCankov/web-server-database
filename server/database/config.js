@@ -6,6 +6,7 @@ exports.defaultConfig = {
     port: process.env.DB_PORT || 3306,
     user: process.env.DB_USERNAME || 'username',
     password: process.env.DB_PASSWORD || 'password',
+    force: process.env.DB_FORCE || false,
     waitForConnections: true,
     connectionLimit: 50,
 };
