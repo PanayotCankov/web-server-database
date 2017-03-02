@@ -1,5 +1,5 @@
 import {DBSetting} from './models';
-import {FinishSyncronization} from "./models";
+import {FinishSyncronization} from "../database/sqlize";
 import {mapObjectToObject} from "../database/BaseModel";
 import logs from "../logs";
 import {SetServerSalt, SetClientSalt} from "web-encryption-wrapper";
