@@ -3,6 +3,6 @@
 /bower_components/
 npm-debug.log
 /coverage/
-/**/*.js
 /**/*.js.map
+/**/*.js
 /**/*.d.ts
