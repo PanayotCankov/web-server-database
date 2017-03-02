@@ -1,6 +1,6 @@
 {
   "name": "web-server-database",
-  "version": "2.0.20",
+  "version": "2.0.21",
   "description": "Trevor Von Seggern's projects web server.",
   "main": "index.js",
   "types": "index.d.ts",
@@ -53,6 +53,7 @@
     "mysql": "^2.13.0",
     "path": "^0.12.7",
     "sequelize": "^3.30.2",
+    "web-encryption-wrapper": "^1.0.2",
     "webpack": "^1.14.0",
     "webpack-dev-middleware": "^1.9.0",
     "webpack-hot-middleware": "^2.16.1"
