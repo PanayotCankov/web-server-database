@@ -31,6 +31,9 @@ function syncNotifyAll() {
 }
 
 export function SyncDatabase() {
+	// make sure that Setting has been loaded.
+	require('../model/Setting');
+
 	// sync all tables...
 	let options = {force: process.env.DB_FORCE};
 	sqlize.sync(options).then(() => {
