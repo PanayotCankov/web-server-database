@@ -1,5 +1,4 @@
 import {Connection} from './database/Connection';
-import {mapObjectToObject, NewUID, ServerModel} from './database/BaseModel';
 import {QueryRequest} from './database/QueryRequest';
 import {GetDatabaseConfig} from "./database/config";
 import {sqlize} from "./database/sqlize";
@@ -9,9 +8,6 @@ export class Database {
 	DatabaseConfig = GetDatabaseConfig();
 	Connection = Connection;
 	QueryRequest = QueryRequest;
-	mapObjectToObject = mapObjectToObject;
-	NewUID = NewUID;
-	ServerModel = ServerModel;
 	sqlize: Sequelize = sqlize;
 }
 

@@ -10,3 +10,5 @@ let setting = sqlize.define('Setting', {
 
 
 export let DBSetting = setting;
+
+import './Setting';
