@@ -22,9 +22,7 @@ export class Application {
 			res.header("X-Powered-By", "Blood, sweat, and tears!");
 			next();
 		});
-		this.express.use(bodyParser.urlencoded({
-			extended: true
-		}));
+		this.express.use(bodyParser.json());
 		this.express.get('/logs', function (req: any, res: any) {
 			res.json(privateLogs);
 		});
@@ -69,6 +67,7 @@ export class Application {
 			this.express.engine('html', require('ejs').renderFile);
 			this.express.set('view engine', 'html');
 			this.express.get('/', (req, res, next) => res.render('index'));
+			this.express.get('/oauth2/callback', (req, res, next) => res.render('index'));
 		}
 		else {
 			console.log('Production env. Make sure that bundle.js script exists!');
