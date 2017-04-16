@@ -53,6 +53,7 @@
     "mysql": "^2.13.0",
     "path": "^0.12.7",
     "sequelize": "^3.30.2",
+    "sqlite3": "^3.1.8",
     "web-base-model": "^1.0.2",
     "web-base-server-model": "^1.0.0",
     "web-encryption-wrapper": "^1.0.2",

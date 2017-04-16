@@ -5,13 +5,14 @@ import * as path from 'path';
 import * as process from 'process';
 
 let config = GetDatabaseConfig();
-
-export let sqlize = new Sequelize(config.database, config.user, config.password, {
+let sqlOptions: any = {
 	host: config.host,
 	port: config.port,
-	dialect: 'mysql'
-});
-
+	dialect: config.databaseType
+};
+if (config.databaseType === 'sqlite')
+	sqlOptions.storage = config.sqliteStorage;
+export let sqlize = new Sequelize(config.database, config.user, config.password, sqlOptions);
 
 let finishedSync: boolean = false;
 let finishSync: (() => void)[] = [];

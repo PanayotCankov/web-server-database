@@ -63,15 +63,15 @@ export class Application {
 				reload: true,
 			}));
 
-			this.express.set('views', process.cwd());
-			this.express.engine('html', require('ejs').renderFile);
-			this.express.set('view engine', 'html');
-			this.express.get('/', (req, res, next) => res.render('index'));
 		}
 		else {
 			console.log('Production env. Make sure that bundle.js script exists!');
 		}
 
+		this.express.set('views', process.cwd());
+		this.express.engine('html', require('ejs').renderFile);
+		this.express.set('view engine', 'html');
+		this.express.get('/', (req, res, next) => res.render('index'));
 		this.express.use('/', express.static(process.cwd()));
 
 		this.express.listen(port, () => logs('listening on port: ' + port + ' - ' + env));
