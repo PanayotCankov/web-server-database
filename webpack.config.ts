@@ -25,7 +25,8 @@ entry = path.resolve(process.cwd(), entry);
 
 
 export default {
-	devtool: '#eval-source-map',
+	devtool: '#inline-source-map',
+
 	entry: [
 		'webpack-hot-middleware/client',
 		entry
