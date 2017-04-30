@@ -9,6 +9,7 @@ export let defaultConfig = {
 	user: process.env.DB_USERNAME || 'username',
 	password: process.env.DB_PASSWORD || 'password',
 	force: process.env.DB_FORCE || false,
+	logging: process.env.DB_LOGGING || false,
 	waitForConnections: true,
 	connectionLimit: 50,
 	sqliteStorage: process.env.DB_DATABASE_STORAGE || path.join(__dirname, 'sqlite.db'),
