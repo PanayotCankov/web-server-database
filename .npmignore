@@ -1,5 +1,6 @@
 /node_modules/
 /coverage/
+/.idea/
 
 # Don't publish ts files.
 /**/*.ts
@@ -7,5 +8,5 @@
 /**/*.js.map
 
 #don't care about typings or tests. Typins should be in the node_modules folder.
-typings/
+/typings/
 test/
