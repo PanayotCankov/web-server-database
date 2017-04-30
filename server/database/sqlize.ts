@@ -8,7 +8,8 @@ let config = GetDatabaseConfig();
 let sqlOptions: any = {
 	host: config.host,
 	port: config.port,
-	dialect: config.databaseType
+	dialect: config.databaseType,
+	logging: config.logging
 };
 if (config.databaseType === 'sqlite')
 	sqlOptions.storage = config.sqliteStorage;
