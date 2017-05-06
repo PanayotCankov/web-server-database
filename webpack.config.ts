@@ -1,16 +1,14 @@
-let webpack = require('webpack');
-let path = require('path');
-let process = require('process');
-let fs = require('fs');
+import * as webpack from 'webpack';
+import * as path from 'path';
+import * as process from 'process';
+import * as fs from 'fs';
 
-let entry = process.env.SERVER_TARGET || 'client.js';
-entry = path.resolve(process.cwd(), entry);
+let entry = path.join(process.cwd(), process.env.SERVER_TARGET || 'client');
 
 export default {
 	devtool: '#inline-source-map',
-
+	context: __dirname,
 	entry: [
-		'webpack-hot-middleware/client',
 		entry
 	],
 	output: {
@@ -23,12 +21,9 @@ export default {
 		'$': "$",
 	},
 	resolve: {
-		extensions: ['', '.js'],
-		modulesDirectories: ['node_modules', 'bower_components']
+		extensions: ['.js'],
 	},
 	plugins: [
-		new webpack.optimize.OccurenceOrderPlugin(false),
-		new webpack.HotModuleReplacementPlugin()
 	],
 	target: 'node',
 	node: {
