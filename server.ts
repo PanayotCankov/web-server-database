@@ -1,8 +1,7 @@
 // Created by trevor on 2/2/17.
-import {Module} from "./server/module";
 import e = require("express");
-import './testSequelize';
 import {Setting} from "./server/model/Setting";
+import {App} from "./server/App";
 
 let testRouter = e.Router();
 testRouter.get('/', function (request, response) {
@@ -12,6 +11,8 @@ testRouter.get('/', function (request, response) {
 });
 
 // test database
-Module.Server.App.APIModules.push({name: 'test', router: testRouter});
+App.APIModules.push({name: 'test', router: testRouter});
 
-Module.Server.App.listen();
+App.listen();
+
+export default App;

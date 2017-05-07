@@ -2,7 +2,7 @@
 import * as path from 'path';
 
 export let defaultConfig = {
-	databaseType: process.env.DB_DATABASE_TYPE || 'mysql',
+	databaseType: process.env.DB_DATABASE_TYPE || 'sqlite',
 	database: process.env.DB_DATABASE || 'Quicksilver',
 	host: process.env.DB_HOST || 'localhost',
 	port: process.env.DB_PORT || 3306,

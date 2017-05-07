@@ -5,6 +5,8 @@ import defaultWebpackConfig from '../webpack.config';
 import {APIModule} from "./module";
 import * as helmet from 'helmet';
 import * as webpack from 'webpack';
+import * as webpackDevMiddleware from 'webpack-dev-middleware';
+import {FinishSyncronization, SyncDatabase} from "./database/sqlize";
 
 let bodyParser = require("body-parser");
 
@@ -41,6 +43,21 @@ export class Application {
 		this.express.use('/api', router);
 	}
 
+	private cbListenList: (() => void)[] = [];
+
+	public registerListenCallback(cb: () => void): void {
+		if (this.cbListenList === null)
+			return cb && cb();
+		this.cbListenList.push(cb);
+	}
+
+	private callListenCallback(): void {
+		for (let i = 0; i < this.cbListenList.length; ++i) {
+			this.cbListenList[i]();
+		}
+		this.cbListenList = null;
+	}
+
 	listen(port?: number) {
 		this.api();
 
@@ -48,7 +65,11 @@ export class Application {
 			port = process.env.PORT || 3000;
 
 		let env = process.env.NODE_ENV || 'dev';
-		if (env === 'dev') {
+		if (env !== 'production') {
+			this.express.use(webpackDevMiddleware(webpack(this.webpackConfig), {
+				publicPath: this.webpackConfig.output.publicPath,
+				stats: {colors: true}
+			}));
 		}
 		else {
 			webpack(this.webpackConfig, (err, stats) => {
@@ -78,7 +99,13 @@ export class Application {
 		this.express.get('/', (req, res, next) => res.render('index'));
 		this.express.use('/', express.static(process.cwd()));
 
-		this.express.listen(port, () => logs('listening on port: ' + port + ' - ' + env));
+		FinishSyncronization(() => {
+			this.express.listen(port, () => {
+				logs('listening on port: ' + port + ' - ' + env);
+				this.callListenCallback();
+			});
+		});
+		SyncDatabase();
 	}
 }
 

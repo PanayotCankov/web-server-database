@@ -5,7 +5,7 @@ let entry = path.join(process.cwd(), process.env.SERVER_TARGET || 'client');
 
 export default {
 	devtool: '#inline-source-map',
-	context: __dirname,
+	context: process.cwd(),
 	entry: [
 		entry
 	],

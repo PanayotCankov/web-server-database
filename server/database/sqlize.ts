@@ -3,6 +3,7 @@ import * as Sequelize from "sequelize";
 import {GetDatabaseConfig} from './config';
 import * as path from 'path';
 import * as process from 'process';
+import logs from "../logs";
 
 let config = GetDatabaseConfig();
 let sqlOptions: any = {
@@ -41,8 +42,8 @@ export function SyncDatabase() {
 	sqlize.sync(options).then(() => {
 		syncNotifyAll();
 		if (options.force)
-			console.log('Dropped/Created all tables');
-		console.log('Synced Database');
+			logs('Dropped/Created all tables');
+		logs('Synced Database');
 	});
 }
 

@@ -1,7 +1,7 @@
 import {BaseModel} from 'web-base-model';
+import * as assert from "assert";
 let asdf = BaseModel;
 class MockHelloService {
-
 	public sayHello(): string {
 		return "Hello world!";
 	}
@@ -9,9 +9,8 @@ class MockHelloService {
 
 describe("HelloComponent", () => {
 	it("should say 'Hello world!'", () => {
-		console.log(BaseModel);
 		let instance = new MockHelloService();
-		expect(instance.sayHello()).toEqual("Hello world!");
-		expect(asdf).toBeDefined();
+		assert.equal(instance.sayHello(), "Hello world!");
+		assert.equal(asdf, asdf);
 	});
 });
