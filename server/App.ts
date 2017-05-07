@@ -67,8 +67,7 @@ export class Application {
 		let env = process.env.NODE_ENV || 'dev';
 		if (env !== 'production') {
 			this.express.use(webpackDevMiddleware(webpack(this.webpackConfig), {
-				quiet: true,
-				publicPath: this.webpackConfig.output.publicPath,
+				quiet: false,
 				stats: {colors: true}
 			}));
 		}

@@ -4,7 +4,7 @@ import * as process from 'process';
 let entry = path.join(process.cwd(), process.env.SERVER_TARGET || 'client');
 
 export default {
-	devtool: '#inline-source-map',
+	// devtool: '#inline-source-map',
 	context: process.cwd(),
 	entry: [
 		entry
@@ -21,8 +21,7 @@ export default {
 	resolve: {
 		extensions: ['.js'],
 	},
-	plugins: [
-	],
+	plugins: [],
 	target: 'node',
 	node: {
 		fs: 'empty',
