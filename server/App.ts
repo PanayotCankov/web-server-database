@@ -3,7 +3,9 @@ import * as express from 'express';
 import {privateLogs, default as logs} from "./logs";
 import defaultWebpackConfig from '../webpack.config';
 import {APIModule} from "./module";
-import helmet = require("helmet");
+import * as helmet from 'helmet';
+import * as webpack from 'webpack';
+
 let bodyParser = require("body-parser");
 
 export class Application {
@@ -39,7 +41,7 @@ export class Application {
 		this.express.use('/api', router);
 	}
 
-	public listen(port?: number) {
+	listen(port?: number) {
 		this.api();
 
 		if (!port)
@@ -47,25 +49,27 @@ export class Application {
 
 		let env = process.env.NODE_ENV || 'dev';
 		if (env === 'dev') {
-			let webpack = require('webpack');
-			let webpackDevMiddleware = require('webpack-dev-middleware');
-			let webpackHotMiddleware = require('webpack-hot-middleware');
-
-			let compiler = webpack(this.webpackConfig);
-
-			this.express.use(webpackDevMiddleware(compiler, {
-				publicPath: this.webpackConfig.output.publicPath,
-				stats: {colors: true}
-			}));
-			this.express.use(webpackHotMiddleware(compiler, {
-				log: console.log,
-				noInfo: true,
-				reload: true,
-			}));
-
 		}
 		else {
-			console.log('Production env. Make sure that bundle.js script exists!');
+			webpack(this.webpackConfig, (err, stats) => {
+				if (err) {
+					console.error(err.stack || err);
+					if (err.details) {
+						console.error(err.details);
+					}
+					return;
+				}
+
+				const info = stats.toJson();
+
+				if (stats.hasErrors()) {
+					console.error(info.errors);
+				}
+
+				if (stats.hasWarnings()) {
+					console.warn(info.warnings)
+				}
+			});
 		}
 
 		this.express.set('views', process.cwd());

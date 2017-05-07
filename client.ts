@@ -7,6 +7,5 @@ let app = angular.module('app', []);
 
 app.controller('appcontroller', [function () {
 	console.log('I am on the browser!');
-	let abc = '';
-	abc.asdf.asdf = 'asdf'; // error
+	let abc:any = '';
 }]);

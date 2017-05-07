@@ -1,14 +1,16 @@
 module.exports = function (config) {
 	config.set({
-		frameworks: ["jasmine", "karma-typescript"],
+		frameworks: [
+			'karma-typescript',
+			'jasmine',
+		],
 		files: [
-			{pattern: "tests/**/*.ts"},
-			{pattern: "lib/**/*.ts"},
+			{pattern: 'test/**/*.spec.ts'},
 		],
 		preprocessors: {
-			"**/*.ts": ["karma-typescript"],
+			'**/*.ts': ['karma-typescript'],
 		},
-		reporters: ["progress", "karma-typescript"],
-		browsers: ["PhantomJS"]
+		reporters: ['progress', 'karma-typescript'],
+		browsers: ['PhantomJS'],
 	});
 };
