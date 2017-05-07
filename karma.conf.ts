@@ -12,5 +12,8 @@ module.exports = function (config) {
 		},
 		reporters: ['progress', 'karma-typescript'],
 		browsers: ['PhantomJS'],
+		karmaTypescriptConfig: {
+			tsconfig: "./tsconfig.json",
+		},
 	});
 };
