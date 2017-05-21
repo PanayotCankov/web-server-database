@@ -3,7 +3,7 @@
  */
 import * as angular from 'angular';
 
-let app = angular.module('app', ['ui.router']);
+let app = angular.module('app', []);
 
 app.controller('appcontroller', [function () {
 	console.log('I am on the browser!');
